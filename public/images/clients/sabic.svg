@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 90" fill="none">
+    <rect x="15" y="18" width="54" height="54" rx="12" fill="#005A9C" />
+    <path d="M28 45 C28 36 34 30 42 30 C50 30 56 36 56 45 C56 54 50 60 42 60 C34 60 28 54 28 45 Z" stroke="#00A3E0" stroke-width="6" fill="none" />
+    <circle cx="42" cy="45" r="6" fill="#FFFFFF" />
+    <text x="82" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#005A9C" letter-spacing="1">SABIC</text>
+    <text x="84" y="66" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#00A3E0">سابك للبتروكيماويات</text>
+  </svg>

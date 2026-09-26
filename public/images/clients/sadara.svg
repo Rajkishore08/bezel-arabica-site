@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 290 90" fill="none">
+    <circle cx="42" cy="45" r="28" fill="#E11D48" />
+    <path d="M32 35 L42 25 L52 35 L42 45 Z" fill="#FFFFFF" />
+    <path d="M32 55 L42 45 L52 55 L42 65 Z" fill="#FECDD3" />
+    <text x="82" y="46" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="900" fill="#9F1239" letter-spacing="1">SADARA</text>
+    <text x="84" y="65" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#E11D48">شركة صدارة للكيميائيات</text>
+  </svg>

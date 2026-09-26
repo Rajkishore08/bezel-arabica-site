@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --primary-orange: #F4511E;
+    --primary-orange-hover: #D84315;
+    --navy-dark: #071923;
+    --navy-deep: #0A0F12;
+    --navy-card: #FFFFFF;
+    --steel-grey: #64748B;
+    --light-grey: #F1F5F9;
+    --off-white: #F8FAFC;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  html[dir="rtl"] {
+    font-family: 'Tajawal', 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  body {
+    background-color: #F8FAFC;
+    color: #0F172A;
+    overflow-x: hidden;
+    selection-background-color: #F4511E;
+    selection-color: #FFFFFF;
+  }
+}
+
+/* Custom Utilities */
+.text-bezel-orange {
+  color: #F4511E;
+}
+.bg-bezel-orange {
+  background-color: #F4511E;
+}
+.border-bezel-orange {
+  border-color: #F4511E;
+}
+.hover\:bg-bezel-orange-hover:hover {
+  background-color: #D84315;
+}
+
+/* Industrial Light Grid Patterns */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+}
+
+.bg-tech-dots {
+  background-image: radial-gradient(rgba(244, 81, 30, 0.12) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+.bg-industrial-lines {
+  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(45deg, rgba(15, 23, 42, 0.025) 25%, transparent 25%, transparent 75%, rgba(15, 23, 42, 0.025) 75%, rgba(15, 23, 42, 0.025)),
+    linear-gradient(45deg, rgba(15, 23, 42, 0.025) 25%, transparent 25%, transparent 75%, rgba(15, 23, 42, 0.025) 75%, rgba(15, 23, 42, 0.025));
+}
+
+/* Glassmorphism & Light Panels */
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F4511E;
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-rtl {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+[dir="rtl"] .animate-marquee {
+  animation: marquee-rtl 35s linear infinite;
+}

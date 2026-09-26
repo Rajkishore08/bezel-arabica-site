@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 90" fill="none">
+    <circle cx="42" cy="45" r="28" fill="#06B6D4" />
+    <path d="M30 45 C30 35 38 30 46 30 C54 30 58 35 58 40 C58 52 32 50 32 60 C32 62 36 64 42 64 C48 64 54 60 56 56" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none" />
+    <text x="80" y="52" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="900" fill="#0891B2" letter-spacing="-1">eNGie</text>
+  </svg>
