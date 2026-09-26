@@ -6,6 +6,7 @@ import { Phone, Mail, MapPin, Send, CheckCircle2, ChevronRight, Building2, Clock
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SectionHeading from "@/components/SectionHeading";
+import GoogleMapPreview from "@/components/GoogleMapPreview";
 import { useLanguage } from "@/context/LanguageContext";
 import { COMPANY_INFO } from "@/data/companyData";
 
@@ -121,18 +122,9 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Interactive Map Coordinates View */}
-            <div className="lg:col-span-6 bg-slate-50 border border-slate-200 rounded-xl p-6 space-y-4 text-center">
-              <div className="w-12 h-12 rounded-full bg-orange-100 text-[#F4511E] flex items-center justify-center mx-auto">
-                <Globe className="w-6 h-6" />
-              </div>
-              <div>
-                <div className="font-mono text-xs text-slate-400">GPS COORDINATES</div>
-                <div className="font-mono text-sm font-bold text-slate-900 mt-1">{currentLoc.mapCoords}</div>
-              </div>
-              <p className="text-xs text-slate-500">
-                Direct dispatch and emergency technical mobilization available 24/7 across all Eastern and Western province petrochemical clusters.
-              </p>
+            {/* Interactive Google Map Preview Card */}
+            <div className="lg:col-span-6">
+              <GoogleMapPreview />
             </div>
           </div>
         </div>

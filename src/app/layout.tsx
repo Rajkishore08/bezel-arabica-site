@@ -68,6 +68,7 @@ export const metadata: Metadata = {
 };
 
 import PageLoader from "@/components/PageLoader";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default function RootLayout({
   children,
@@ -80,6 +81,7 @@ export default function RootLayout({
         <LanguageProvider>
           <PageLoader />
           {children}
+          <ScrollToTop />
         </LanguageProvider>
       </body>
     </html>

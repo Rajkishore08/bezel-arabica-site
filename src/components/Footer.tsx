@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Phone, Mail, MapPin, ShieldCheck, ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { COMPANY_INFO } from "@/data/companyData";
+import GoogleMapPreview from "@/components/GoogleMapPreview";
 
 export default function Footer() {
   const { lang } = useLanguage();
@@ -181,6 +182,11 @@ export default function Footer() {
               <div className="pt-2 text-xs text-slate-500">
                 <span className="font-semibold text-slate-700">{lang === "ar" ? "الفروع:" : "Kingdom Hubs:"}</span>{" "}
                 Jubail • Jeddah • Rabigh • Yanbu
+              </div>
+
+              {/* Google Map Preview Card */}
+              <div className="pt-2">
+                <GoogleMapPreview />
               </div>
             </div>
           </div>

@@ -815,7 +815,7 @@ export const RESOURCES_DATA: ResourceCategory[] = [
 
 export const CLIENTS_LIST: ClientItem[] = [
   { name: "Saudi Aramco", sector: "Oil & Gas / Energy", logoText: "SAUDI ARAMCO", logo: "/images/clients/aramco.svg", location: "Dhahran / Kingdom-wide", featured: true },
-  { name: "SABIC", sector: "Petrochemicals & Chemicals", logoText: "SABIC", logo: "/images/clients/sabic.svg", location: "Riyadh / Jubail / Yanbu", featured: true },
+  { name: "SABIC", sector: "Petrochemicals & Chemicals", logoText: "SABIC", logo: "/images/clients/sabic.jpg", location: "Riyadh / Jubail / Yanbu", featured: true },
   { name: "Saudi Electricity Company", sector: "Power Generation & Grid", logoText: "SEC", logo: "/images/clients/sec.svg", location: "Kingdom-wide", featured: true },
   { name: "TASNEE", sector: "Petrochemicals & Industrial", logoText: "TASNEE", logo: "/images/clients/tasnee.svg", location: "Jubail", featured: true },
   { name: "Sadara Chemical Company", sector: "Specialty Chemicals", logoText: "SADARA", logo: "/images/clients/sadara.svg", location: "Jubail Industrial II", featured: true },
@@ -825,12 +825,12 @@ export const CLIENTS_LIST: ClientItem[] = [
   { name: "Hyundai Heavy Industries", sector: "EPC & Heavy Industrial", logoText: "HYUNDAI HEAVY IND.", logo: "/images/clients/hyundai.svg", location: "Kingdom-wide", featured: true },
   { name: "Sahara Petrochemicals", sector: "Petrochemicals", logoText: "SAHARA", logo: "/images/clients/sahara.svg", location: "Jubail", featured: true },
   { name: "Arabia Cement Company", sector: "Building Materials", logoText: "ARABIAN CEMENT", logo: "/images/clients/arabian-cement.svg", location: "Rabigh / Jeddah", featured: true },
-  { name: "Saudi Aramco Base Oil Co. (Luberef)", sector: "Refining & Lubricants", logoText: "LUBEREF", logo: "/images/clients/luberef.svg", location: "Jeddah & Yanbu", featured: true },
-  { name: "Saudi Cement Company", sector: "Building Materials", logoText: "SAUDI CEMENT", logo: "/images/clients/saudi-cement.svg", location: "Eastern Province", featured: true },
+  { name: "Saudi Aramco Base Oil Co. (Luberef)", sector: "Refining & Lubricants", logoText: "LUBEREF", logo: "/images/clients/luberef.jpg", location: "Jeddah & Yanbu", featured: true },
+  { name: "Saudi Cement Company", sector: "Building Materials", logoText: "SAUDI CEMENT", logo: "/images/clients/saudi-cement.jpg", location: "Eastern Province", featured: true },
   { name: "SWCC (Saline Water Conversion)", sector: "Water Utilities", logoText: "SWCC", logo: "/images/clients/swcc.svg", location: "Kingdom-wide", featured: true },
   { name: "ENGIE Energy", sector: "Power & Desalination", logoText: "ENGIE", logo: "/images/clients/engie.svg", location: "Jubail", featured: true },
   { name: "Aramco KJO (Khafji Joint Ops)", sector: "Upstream Oil & Gas", logoText: "KJO ARAMCO", logo: "/images/clients/kjo.svg", location: "Al Khafji", featured: true },
-  { name: "SEPCO 3 Engineering", sector: "Power Plant EPC", logoText: "SEPCO III", logo: "/images/clients/sepco3.svg", location: "Ras Al Khair", featured: true },
+  { name: "SEPCO 3 Engineering", sector: "Power Plant EPC", logoText: "SEPCO III", logo: "/images/clients/sepco3.jpg", location: "Ras Al Khair", featured: true },
 ];
 
 export const PARTNERS_LIST: PartnerItem[] = [
