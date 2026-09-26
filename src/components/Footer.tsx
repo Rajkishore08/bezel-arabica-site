@@ -17,38 +17,39 @@ export default function Footer() {
       <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-10 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-10 border-b border-slate-200/80">
+        {/* Single Row 5-Column Grid on Desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-6 xl:gap-8 pb-10 border-b border-slate-200/80 items-start">
           
-          {/* Column 1: Brand & Credentials (4 cols) */}
-          <div className="lg:col-span-4 space-y-4">
+          {/* Column 1: Brand & Credentials (3 cols) */}
+          <div className="lg:col-span-3 space-y-3.5">
             <Link href="/" className="inline-block transition-transform hover:opacity-90">
               <Image
                 src="/images/logo.png"
                 alt="Bezel Arabia Company Ltd."
                 width={240}
                 height={55}
-                className="h-10 sm:h-11 w-auto object-contain"
+                className="h-9 sm:h-10 w-auto object-contain"
               />
             </Link>
 
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-sm">
+            <p className="text-xs text-slate-600 leading-relaxed">
               {lang === "ar"
                 ? "شركة سعودية رائدة تقدم حلولاً متكاملة في الهندسة، والإنشاءات الصناعية، وتقنية المعلومات، وإدارة المرافق منذ عام 1992."
                 : "Integrated industrial, technology, maintenance and facility solutions across Saudi Arabia with a commitment to quality and safety since 1992."}
             </p>
 
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-800">
-              <ShieldCheck className="w-4 h-4 text-[#F4511E]" />
-              <span>ISO 9001:2015 Certified • Saudi Commercial Reg. 1992</span>
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200 text-[11px] font-semibold text-slate-800">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#F4511E] shrink-0" />
+              <span>ISO 9001:2015 • Est. 1992</span>
             </div>
 
             {/* Social Pill Buttons */}
-            <div className="flex items-center gap-2 pt-1">
+            <div className="flex items-center gap-1.5 pt-0.5">
               <a
                 href={COMPANY_INFO.socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1 rounded-md bg-slate-100 hover:bg-[#F4511E] text-slate-700 hover:text-white transition-all text-xs font-medium border border-slate-200"
+                className="px-2.5 py-1 rounded-md bg-slate-100 hover:bg-[#F4511E] text-slate-700 hover:text-white transition-all text-[11px] font-medium border border-slate-200"
               >
                 LinkedIn
               </a>
@@ -56,7 +57,7 @@ export default function Footer() {
                 href={COMPANY_INFO.socialLinks.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1 rounded-md bg-slate-100 hover:bg-[#F4511E] text-slate-700 hover:text-white transition-all text-xs font-medium border border-slate-200"
+                className="px-2.5 py-1 rounded-md bg-slate-100 hover:bg-[#F4511E] text-slate-700 hover:text-white transition-all text-[11px] font-medium border border-slate-200"
               >
                 Facebook
               </a>
@@ -64,7 +65,7 @@ export default function Footer() {
                 href={COMPANY_INFO.socialLinks.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1 rounded-md bg-slate-100 hover:bg-[#F4511E] text-slate-700 hover:text-white transition-all text-xs font-medium border border-slate-200"
+                className="px-2.5 py-1 rounded-md bg-slate-100 hover:bg-[#F4511E] text-slate-700 hover:text-white transition-all text-[11px] font-medium border border-slate-200"
               >
                 Twitter
               </a>
@@ -76,7 +77,7 @@ export default function Footer() {
             <h4 className="text-xs font-bold text-slate-900 uppercase tracking-widest font-mono">
               {lang === "ar" ? "الشركة" : "COMPANY"}
             </h4>
-            <ul className="space-y-2 text-xs sm:text-sm">
+            <ul className="space-y-2 text-xs">
               <li>
                 <Link href="/about" className="hover:text-[#F4511E] transition-colors">
                   {lang === "ar" ? "عن بيزل العربية" : "About Us"}
@@ -110,89 +111,93 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Capabilities & Solutions (3 cols) */}
-          <div className="lg:col-span-3 space-y-3">
+          {/* Column 3: Capabilities & Solutions (2 cols) */}
+          <div className="lg:col-span-2 space-y-3">
             <h4 className="text-xs font-bold text-slate-900 uppercase tracking-widest font-mono">
-              {lang === "ar" ? "الخدمات والحلول" : "SOLUTIONS"}
+              {lang === "ar" ? "الخدمات" : "SOLUTIONS"}
             </h4>
-            <ul className="space-y-2 text-xs sm:text-sm">
+            <ul className="space-y-2 text-xs">
               <li>
                 <Link href="/services/industrial" className="hover:text-[#F4511E] transition-colors">
-                  {lang === "ar" ? "إنشاءات الهندسة المدنية والميكانيكية" : "CMEI Construction"}
+                  {lang === "ar" ? "الإنشاءات الصناعية" : "CMEI Construction"}
                 </Link>
               </li>
               <li>
                 <Link href="/services/industrial" className="hover:text-[#F4511E] transition-colors">
-                  {lang === "ar" ? "التشغيل والصيانة الصناعية" : "Plant Operation & Maintenance"}
+                  {lang === "ar" ? "التشغيل والصيانة" : "Plant O&M"}
                 </Link>
               </li>
               <li>
                 <Link href="/services/industrial" className="hover:text-[#F4511E] transition-colors">
-                  {lang === "ar" ? "ورشة صيانة ومعايرة الصمامات" : "Valves Overhaul Workshop"}
+                  {lang === "ar" ? "ورشة الصمامات" : "Valves Workshop"}
                 </Link>
               </li>
               <li>
                 <Link href="/services/information-technology" className="hover:text-[#F4511E] transition-colors">
-                  {lang === "ar" ? "أمن وتقنية المعلومات والشبكات" : "IT Infrastructure & Security"}
+                  {lang === "ar" ? "تقنية المعلومات" : "IT Infrastructure"}
                 </Link>
               </li>
               <li>
                 <Link href="/services/camp-catering" className="hover:text-[#F4511E] transition-colors">
-                  {lang === "ar" ? "المخيمات والإعاشة وإدارة المرافق" : "Camp & Catering Facilities"}
+                  {lang === "ar" ? "المخيمات والإعاشة" : "Camp & Catering"}
                 </Link>
               </li>
               <li>
                 <Link href="/products" className="hover:text-[#F4511E] transition-colors text-[#F4511E] font-medium flex items-center gap-1">
-                  <span>{lang === "ar" ? "الذكاء الاصطناعي والتوأم الرقمي" : "Cerebra AI & Digital Twin"}</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
+                  <span>{lang === "ar" ? "الذكاء الاصطناعي" : "Cerebra AI & Twin"}</span>
+                  <ArrowUpRight className="w-3 h-3" />
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Contact & Kingdom Network (3 cols) */}
-          <div className="lg:col-span-3 space-y-3">
+          {/* Column 4: Headquarters & Contact (2 cols) */}
+          <div className="lg:col-span-2 space-y-3">
             <h4 className="text-xs font-bold text-slate-900 uppercase tracking-widest font-mono">
-              {lang === "ar" ? "المقر والتواصل" : "HEADQUARTERS & HUBS"}
+              {lang === "ar" ? "المقر والتواصل" : "HEADQUARTERS"}
             </h4>
             
-            <div className="space-y-2.5 text-xs sm:text-sm text-slate-600">
-              <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-[#F4511E] shrink-0 mt-0.5" />
+            <div className="space-y-2.5 text-xs text-slate-600">
+              <div className="flex items-start gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-[#F4511E] shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-semibold text-slate-900">Al Jubail Industrial City</span>
-                  <div className="text-slate-500 text-xs">P.O. Box 917, Kingdom of Saudi Arabia</div>
+                  <span className="font-semibold text-slate-900">Al Jubail City</span>
+                  <div className="text-slate-500 text-[11px]">P.O. Box 917, KSA</div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-[#F4511E] shrink-0" />
+              <div className="flex items-center gap-1.5">
+                <Phone className="w-3.5 h-3.5 text-[#F4511E] shrink-0" />
                 <a href="tel:+966133611280" className="hover:text-slate-900 font-medium">
                   +966 13 361 1280
                 </a>
               </div>
 
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-[#F4511E]" />
-                <a href="mailto:contact@bezelarabia.com" className="hover:text-slate-900 font-medium">
+              <div className="flex items-center gap-1.5">
+                <Mail className="w-3.5 h-3.5 text-[#F4511E] shrink-0" />
+                <a href="mailto:contact@bezelarabia.com" className="hover:text-slate-900 font-medium truncate">
                   contact@bezelarabia.com
                 </a>
               </div>
 
-              <div className="pt-2 text-xs text-slate-500">
-                <span className="font-semibold text-slate-700">{lang === "ar" ? "الفروع:" : "Kingdom Hubs:"}</span>{" "}
+              <div className="pt-1 text-[11px] text-slate-500 leading-tight">
+                <span className="font-semibold text-slate-700">{lang === "ar" ? "الفروع:" : "Hubs:"}</span>{" "}
                 Jubail • Jeddah • Rabigh • Yanbu
-              </div>
-
-              {/* Google Map Preview Card */}
-              <div className="pt-2">
-                <GoogleMapPreview />
               </div>
             </div>
           </div>
+
+          {/* Column 5: Google Map Preview in Single Row (3 cols) */}
+          <div className="lg:col-span-3 space-y-2">
+            <h4 className="text-xs font-bold text-slate-900 uppercase tracking-widest font-mono">
+              {lang === "ar" ? "موقع المقر الرئيسي" : "LOCATION MAP"}
+            </h4>
+            <GoogleMapPreview />
+          </div>
+
         </div>
 
-        {/* Bottom Bar */}
+        {/* Bottom Copyright and Legal Bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
           <div>
             © {new Date().getFullYear()} Bezel Arabia Company Ltd. (شركة بيزل العربية المحدودة). All rights reserved.
