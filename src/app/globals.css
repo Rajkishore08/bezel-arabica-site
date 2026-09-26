@@ -25,8 +25,11 @@
     background-color: #F8FAFC;
     color: #0F172A;
     overflow-x: hidden;
-    selection-background-color: #F4511E;
-    selection-color: #FFFFFF;
+  }
+
+  ::selection {
+    background-color: #F4511E;
+    color: #FFFFFF;
   }
 }
 
@@ -94,6 +97,7 @@
 
 .text-gradient-orange {
   background: linear-gradient(135deg, #F4511E 0%, #EA580C 50%, #D97706 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
