@@ -80,7 +80,7 @@ export default function Hero() {
   const [activePillar, setActivePillar] = useState(0);
 
   return (
-    <section className="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-between overflow-hidden bg-[#071923] text-white pt-28 lg:pt-32 border-b border-slate-800">
+    <section className="relative min-h-[85vh] lg:min-h-[calc(100vh-100px)] flex flex-col justify-between overflow-hidden bg-[#071923] text-white pt-10 sm:pt-14 pb-0 border-b border-slate-800">
       {/* Cinematic Full-Bleed Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
