@@ -63,6 +63,16 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon.ico" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: ["/icon.png"],
+  },
   robots: {
     index: true,
     follow: true,
