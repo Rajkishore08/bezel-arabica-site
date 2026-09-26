@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SectionHeading from "@/components/SectionHeading";
 import GoogleMapPreview from "@/components/GoogleMapPreview";
+import PageHeroBanner from "@/components/PageHeroBanner";
 import { useLanguage } from "@/context/LanguageContext";
 import { COMPANY_INFO } from "@/data/companyData";
 
@@ -34,25 +35,38 @@ export default function ContactPage() {
     <main className="min-h-screen bg-[#F8FAFC] flex flex-col">
       <Header />
 
-      {/* Hero - Matching Reference Mockup */}
-      <section className="relative pt-36 pb-12 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-xs font-mono text-slate-500 mb-6">
-            <Link href="/" className="hover:text-[#F4511E]">Home</Link>
-            <ChevronRight className="w-3 h-3 text-slate-400" />
-            <span className="text-[#F4511E] font-bold">Contact</span>
-          </div>
+      {/* Page Hero Banner */}
+      <PageHeroBanner
+        title="Contact Us"
+        titleAr="اتصل بنا"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Contact", active: true },
+        ]}
+        bgImage="/images/about_building.jpg"
+      />
 
-          <div className="max-w-3xl space-y-3">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.12]">
-              {lang === "ar" ? "اتصل بنا" : "Contact Us"}
-            </h1>
-            <div className="text-xl sm:text-2xl font-bold text-[#F4511E]">
-              Get in Touch
-            </div>
+      {/* Intro Narrative Section */}
+      <section className="py-12 sm:py-16 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl space-y-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 leading-[1.15]">
+              {lang === "ar" ? (
+                <>
+                  تواصل مع خبرائنا <br />
+                  <span className="text-[#F4511E]">في جميع أنحاء المملكة</span>
+                </>
+              ) : (
+                <>
+                  Get in Touch with <br />
+                  <span className="text-[#F4511E]">Bezel Arabia Today</span>
+                </>
+              )}
+            </h2>
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              We are here to support your business with our expertise and solutions across Saudi Arabia.
+              {lang === "ar"
+                ? "فريقنا الهندسي والإداري جاهز لدعم مشاريعكم واستفساراتكم من خلال مكاتبنا في الجبيل وجدة وينبع ورابغ."
+                : "Our engineering and customer support teams are ready to assist with your industrial, IT, and maintenance requirements across the Kingdom."}
             </p>
           </div>
         </div>

@@ -23,21 +23,18 @@ import { useLanguage } from "@/context/LanguageContext";
 const HERO_PILLARS = [
   {
     num: "01",
-    subNum: "01/",
     label: "INDUSTRIAL SOLUTIONS",
     labelAr: "الحلول الصناعية",
     link: "/services/industrial",
   },
   {
     num: "02",
-    subNum: "02/",
     label: "TECHNOLOGY INFRASTRUCTURE",
     labelAr: "البنية التحتية والتقنية",
     link: "/services/information-technology",
   },
   {
     num: "03",
-    subNum: "03/",
     label: "CAMP & CATERING FACILITIES",
     labelAr: "المخيمات والإعاشة والمرافق",
     link: "/services/camp-catering",
@@ -192,15 +189,12 @@ export default function Hero() {
                     key={pillar.num}
                     href={pillar.link}
                     onMouseEnter={() => setActivePillar(idx)}
-                    className="flex items-start gap-4 text-left group cursor-pointer"
+                    className="flex items-center gap-4 text-left group cursor-pointer"
                   >
-                    <div className="text-2xl sm:text-3xl font-mono font-extrabold text-[#F4511E] leading-none shrink-0 group-hover:scale-110 transition-transform">
+                    <div className="text-3xl sm:text-4xl font-mono font-black text-[#F4511E] leading-none shrink-0 group-hover:scale-110 transition-transform drop-shadow-sm">
                       {pillar.num}
                     </div>
                     <div>
-                      <div className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider">
-                        {pillar.subNum}
-                      </div>
                       <div className="text-sm sm:text-base font-extrabold text-white group-hover:text-[#F4511E] transition-colors tracking-wide leading-tight">
                         {lang === "ar" ? pillar.labelAr : pillar.label}
                       </div>

@@ -6,6 +6,7 @@ import { CheckCircle2 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
+import PageHeroBanner from "@/components/PageHeroBanner";
 import { useLanguage } from "@/context/LanguageContext";
 import { SERVICES_LIST } from "@/data/companyData";
 
@@ -17,20 +18,39 @@ export default function IndustrialServicesPage() {
     <main className="min-h-screen bg-[#F8FAFC] flex flex-col">
       <Header />
 
-      {/* Hero */}
-      <section className="relative pt-36 pb-20 bg-white border-b border-slate-200">
-        <div className="absolute inset-0 bg-industrial-lines opacity-30 pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Page Hero Banner */}
+      <PageHeroBanner
+        title="Industrial Division"
+        titleAr="خدمات القطاع الصناعي والهندسي"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Services", href: "/services" },
+          { label: "Industrial", active: true },
+        ]}
+        bgImage="/images/cmei_construction.jpg"
+      />
+
+      {/* Intro Narrative Section */}
+      <section className="py-12 sm:py-16 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-[#F4511E] uppercase tracking-widest">
-              <span className="w-2 h-2 rounded-full bg-[#F4511E]"></span>
-              <span>INDUSTRIAL DIVISION</span>
-            </div>
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
-              {lang === "ar" ? "خدمات القطاع الصناعي والهندسي" : "Industrial Engineering & Construction Services"}
-            </h1>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 leading-[1.15]">
+              {lang === "ar" ? (
+                <>
+                  خدمات هندسية وإنشائية متكاملة <br />
+                  <span className="text-[#F4511E]">للمنشآت البتروكيماوية والطاقة</span>
+                </>
+              ) : (
+                <>
+                  Industrial Engineering &amp; <br />
+                  <span className="text-[#F4511E]">Turnkey Construction Services</span>
+                </>
+              )}
+            </h2>
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              Delivering turnkey Civil, Mechanical, Electrical, and Instrumentation (CMEI) construction, plant turnaround maintenance, and specialized valve testing for Saudi Aramco, SABIC, and regional energy giants.
+              {lang === "ar"
+                ? "تنفيذ مشاريع CMEI الشاملة وأعمال الصيانة الميكانيكية الشاملة وتجهيز وتوريد الصمامات الصناعية طبقاً لأعلى المعايير."
+                : "Delivering turnkey Civil, Mechanical, Electrical, and Instrumentation (CMEI) construction, plant turnaround maintenance, and certified valve services for energy leaders."}
             </p>
           </div>
         </div>

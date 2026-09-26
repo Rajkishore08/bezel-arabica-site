@@ -3,10 +3,11 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ChevronRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
+import PageHeroBanner from "@/components/PageHeroBanner";
 import { useLanguage } from "@/context/LanguageContext";
 import { SERVICES_LIST } from "@/data/companyData";
 
@@ -20,19 +21,22 @@ export default function ServicesPage() {
     <main className="min-h-screen bg-[#F8FAFC] flex flex-col">
       <Header />
 
-      {/* Services Hero - Matching Reference Mockup */}
-      <section className="relative pt-36 pb-16 bg-white border-b border-slate-200">
-        <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-xs font-mono text-slate-500 mb-6">
-            <Link href="/" className="hover:text-[#F4511E]">Home</Link>
-            <ChevronRight className="w-3 h-3 text-slate-400" />
-            <span className="text-[#F4511E] font-bold">Services</span>
-          </div>
+      {/* Page Hero Banner - Matching Mockup */}
+      <PageHeroBanner
+        title="Our Services"
+        titleAr="خدماتنا وحلولنا"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Services", active: true },
+        ]}
+        bgImage="/images/hero_refinery.jpg"
+      />
 
-          <div className="max-w-3xl space-y-4">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.12]">
+      {/* Section Intro & Tabs - Matching Reference Mockup */}
+      <section className="py-10 sm:py-12 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl space-y-3">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 leading-[1.15]">
               {lang === "ar" ? (
                 <>
                   حلول شاملة <br />
@@ -44,17 +48,17 @@ export default function ServicesPage() {
                   <span className="text-[#F4511E]">Across Multiple Industries</span>
                 </>
               )}
-            </h1>
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              Delivering integrated solutions with expertise, technology and a commitment to quality.
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+              Delivering integrated services with expertise, technology and a commitment to quality.
             </p>
           </div>
 
           {/* Division Filter Tabs - Matching Reference Mockup */}
-          <div className="flex flex-wrap items-center gap-3 mt-10">
+          <div className="flex flex-wrap items-center gap-3 mt-8">
             <button
               onClick={() => setActiveTab("industrial")}
-              className={`px-6 py-2.5 rounded-lg text-xs sm:text-sm font-bold transition-all ${
+              className={`px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 activeTab === "industrial"
                   ? "bg-[#F4511E] text-white shadow-md shadow-orange-500/20"
                   : "bg-slate-100 text-slate-700 hover:bg-slate-200"
@@ -64,7 +68,7 @@ export default function ServicesPage() {
             </button>
             <button
               onClick={() => setActiveTab("it")}
-              className={`px-6 py-2.5 rounded-lg text-xs sm:text-sm font-bold transition-all ${
+              className={`px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 activeTab === "it"
                   ? "bg-[#F4511E] text-white shadow-md shadow-orange-500/20"
                   : "bg-slate-100 text-slate-700 hover:bg-slate-200"
@@ -74,7 +78,7 @@ export default function ServicesPage() {
             </button>
             <button
               onClick={() => setActiveTab("catering")}
-              className={`px-6 py-2.5 rounded-lg text-xs sm:text-sm font-bold transition-all ${
+              className={`px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 activeTab === "catering"
                   ? "bg-[#F4511E] text-white shadow-md shadow-orange-500/20"
                   : "bg-slate-100 text-slate-700 hover:bg-slate-200"
@@ -87,7 +91,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Cards Grid - Matching Reference Mockup */}
-      <section className="py-20 bg-[#F8FAFC]">
+      <section className="py-14 sm:py-18 bg-[#F8FAFC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {filteredServices.map((svc) => (
@@ -113,7 +117,7 @@ export default function ServicesPage() {
                     <h3 className="text-lg font-bold text-slate-900 group-hover:text-[#F4511E] transition-colors leading-tight">
                       {lang === "ar" ? svc.titleAr : svc.title}
                     </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed">
+                    <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">
                       {svc.shortDesc}
                     </p>
 
@@ -133,7 +137,7 @@ export default function ServicesPage() {
                     href={`/services/${svc.category === "industrial" ? "industrial" : svc.category === "it" ? "information-technology" : "camp-catering"}`}
                     className="inline-flex items-center gap-2 text-xs font-bold text-slate-900 group-hover:text-[#F4511E] transition-colors"
                   >
-                    <span>Learn More</span>
+                    <span>{lang === "ar" ? "تفاصيل الخدمة" : "Learn More"}</span>
                     <ArrowRight className="w-3.5 h-3.5 text-[#F4511E] group-hover:translate-x-0.5 transition-transform" />
                   </Link>
                 </div>

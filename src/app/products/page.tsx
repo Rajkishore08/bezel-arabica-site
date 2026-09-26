@@ -7,6 +7,7 @@ import { Cpu, Eye, Briefcase, CheckCircle2, ArrowRight, ChevronRight } from "luc
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
+import PageHeroBanner from "@/components/PageHeroBanner";
 import { useLanguage } from "@/context/LanguageContext";
 import { PRODUCTS_LIST } from "@/data/companyData";
 
@@ -17,23 +18,26 @@ export default function ProductsPage() {
     <main className="min-h-screen bg-[#F8FAFC] flex flex-col">
       <Header />
 
-      {/* Hero - Matching Reference Mockup */}
-      <section className="relative pt-36 pb-16 bg-white border-b border-slate-200">
-        <div className="absolute inset-0 bg-tech-dots opacity-20 pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-xs font-mono text-slate-500 mb-6">
-            <Link href="/" className="hover:text-[#F4511E]">Home</Link>
-            <ChevronRight className="w-3 h-3 text-slate-400" />
-            <span className="text-[#F4511E] font-bold">Products</span>
-          </div>
+      {/* Page Hero Banner */}
+      <PageHeroBanner
+        title="Our Products"
+        titleAr="منتجاتنا وبرمجياتنا"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Products", active: true },
+        ]}
+        bgImage="/images/products_banner.jpg"
+      />
 
+      {/* Intro Narrative Section - Matching Reference Mockup */}
+      <section className="py-12 sm:py-16 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-4">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.12]">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 leading-[1.15]">
               {lang === "ar" ? (
                 <>
-                  حلول مبتكرة <br />
-                  <span className="text-[#F4511E]">لمستقبل متصل</span>
+                  حلول تقنية مبتكرة <br />
+                  <span className="text-[#F4511E]">لمستقبل صناعي رقمي متصل</span>
                 </>
               ) : (
                 <>
@@ -41,9 +45,11 @@ export default function ProductsPage() {
                   for a <span className="text-[#F4511E]">Connected Future</span>
                 </>
               )}
-            </h1>
+            </h2>
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              Technology products designed to enhance efficiency and productivity across industrial and enterprise domains.
+              {lang === "ar"
+                ? "منتجات وحلول برمجية متطورة صُممت لرفع كفاءة وإنتاجية المنشآت الصناعية والمؤسسات التشغيلية في المملكة."
+                : "Technology products designed to enhance operational efficiency, asset integrity, and workforce productivity across industrial and enterprise sectors."}
             </p>
           </div>
         </div>

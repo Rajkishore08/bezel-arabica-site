@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import SectionHeading from "@/components/SectionHeading";
+import PageHeroBanner from "@/components/PageHeroBanner";
 import { useLanguage } from "@/context/LanguageContext";
 import { PARTNERS_LIST } from "@/data/companyData";
 
@@ -17,20 +18,38 @@ export default function PartnersPage() {
     <main className="min-h-screen bg-[#F8FAFC] flex flex-col">
       <Header />
 
-      {/* Hero */}
-      <section className="relative pt-36 pb-20 bg-white border-b border-slate-200">
-        <div className="absolute inset-0 bg-grid-pattern opacity-15 pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Page Hero Banner */}
+      <PageHeroBanner
+        title="Strategic Partners"
+        titleAr="شركاء التحالف الاستراتيجي"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Partners", active: true },
+        ]}
+        bgImage="/images/it_datacenter.jpg"
+      />
+
+      {/* Intro Narrative Section */}
+      <section className="py-12 sm:py-16 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-[#F4511E] uppercase tracking-widest bg-orange-50 px-3 py-1 rounded-full border border-orange-200">
-              <span className="w-2 h-2 rounded-full bg-[#F4511E]"></span>
-              <span>STRATEGIC ALLIANCES</span>
-            </div>
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
-              {lang === "ar" ? "شركاء التحالف التقني والصناعي" : "Strategic Technology & Engineering Partnerships"}
-            </h1>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 leading-[1.15]">
+              {lang === "ar" ? (
+                <>
+                  تحالفات هندسية وتقنية <br />
+                  <span className="text-[#F4511E]">تدعم رؤية المملكة 2030</span>
+                </>
+              ) : (
+                <>
+                  Technology &amp; Engineering <br />
+                  <span className="text-[#F4511E]">Strategic Alliances</span>
+                </>
+              )}
+            </h2>
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              Partnering with global innovators in Industrial AI, structural engineering, optical networks, and cloud virtualization to deliver state-of-the-art turnkey solutions in Saudi Arabia.
+              {lang === "ar"
+                ? "شراكات استراتيجية مع رواد التكنولوجيا الصناعية، والذكاء الاصطناعي، وشبكات الألياف البصرية لتقديم حلول متكاملة في المملكة."
+                : "Partnering with global innovators in Industrial AI, optical networks, structural engineering, and cloud infrastructure to deliver turnkey excellence across Saudi Arabia."}
             </p>
           </div>
         </div>

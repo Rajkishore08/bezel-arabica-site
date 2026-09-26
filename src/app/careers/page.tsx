@@ -6,6 +6,7 @@ import { Briefcase, UploadCloud, CheckCircle2, User, Mail, Phone, FileText, Send
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SectionHeading from "@/components/SectionHeading";
+import PageHeroBanner from "@/components/PageHeroBanner";
 import { useLanguage } from "@/context/LanguageContext";
 import { COMPANY_INFO } from "@/data/companyData";
 
@@ -30,23 +31,22 @@ export default function CareersPage() {
     <main className="min-h-screen bg-[#F8FAFC] flex flex-col">
       <Header />
 
-      {/* Hero - Matching Reference Mockup Dark Navy Section */}
-      <section className="relative pt-36 pb-20 bg-[#071923] text-white border-b border-slate-800 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="relative w-full h-full">
-            <Image
-              src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=2000&q=80"
-              alt="Bezel Arabia Engineering Careers"
-              fill
-              className="object-cover opacity-20"
-            />
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-[#071923] via-[#071923]/90 to-transparent"></div>
-        </div>
+      {/* Page Hero Banner */}
+      <PageHeroBanner
+        title="Careers & Opportunities"
+        titleAr="الوظائف والفرص المهنية"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Careers", active: true },
+        ]}
+        bgImage="/images/about_engineer.jpg"
+      />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl space-y-6">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
+      {/* Narrative Section - Matching Reference Mockup */}
+      <section className="py-12 sm:py-16 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl space-y-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 leading-[1.15]">
               {lang === "ar" ? (
                 <>
                   ابنِ مستقبلك المهني <br />
@@ -55,43 +55,28 @@ export default function CareersPage() {
               ) : (
                 <>
                   Build Your Future <br />
-                  <span className="text-[#F4511E]">With Bezel Arabia</span>
+                  with <span className="text-[#F4511E]">Bezel Arabia</span>
                 </>
               )}
-            </h1>
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-              Be part of a team that drives progress, innovation and excellence across the Kingdom&apos;s leading industrial megaprojects.
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+              {lang === "ar"
+                ? "انضم إلى نخبة من المهندسين والفنيين والخبراء الذين يقودون التميز في مشاريع المملكة الصناعية والتقنية الكبرى."
+                : "Be part of a team that drives progress, innovation, and engineering excellence across the Kingdom's leading industrial and technology projects."}
             </p>
 
-            {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <a
-                href="#apply"
-                className="bg-[#F4511E] hover:bg-[#D84315] text-white px-6 py-3 rounded-xl font-bold text-sm shadow-md transition-all"
-              >
-                View Current Openings
-              </a>
-              <a
-                href="#apply"
-                className="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-6 py-3 rounded-xl font-bold text-sm backdrop-blur-sm transition-all"
-              >
-                Submit Your CV
-              </a>
-            </div>
-
-            {/* Feature Value Pills */}
-            <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-white/10">
-              <span className="text-xs px-3 py-1.5 rounded-full bg-white/10 text-slate-200 border border-white/10">
+            <div className="flex flex-wrap items-center gap-3 pt-4">
+              <span className="text-xs px-3.5 py-1.5 rounded-full bg-slate-100 text-slate-700 font-semibold border border-slate-200">
                 • Professional Growth
               </span>
-              <span className="text-xs px-3 py-1.5 rounded-full bg-white/10 text-slate-200 border border-white/10">
-                • Challenging Projects
+              <span className="text-xs px-3.5 py-1.5 rounded-full bg-slate-100 text-slate-700 font-semibold border border-slate-200">
+                • Challenging Industrial Projects
               </span>
-              <span className="text-xs px-3 py-1.5 rounded-full bg-white/10 text-slate-200 border border-white/10">
-                • Supportive Team
+              <span className="text-xs px-3.5 py-1.5 rounded-full bg-slate-100 text-slate-700 font-semibold border border-slate-200">
+                • Supportive Engineering Team
               </span>
-              <span className="text-xs px-3 py-1.5 rounded-full bg-white/10 text-slate-200 border border-white/10">
-                • Meaningful Impact
+              <span className="text-xs px-3.5 py-1.5 rounded-full bg-slate-100 text-slate-700 font-semibold border border-slate-200">
+                • Vision 2030 Impact
               </span>
             </div>
           </div>

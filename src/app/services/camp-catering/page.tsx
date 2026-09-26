@@ -7,6 +7,7 @@ import { Utensils, Home, ShieldCheck, CheckCircle2, ArrowRight } from "lucide-re
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
+import PageHeroBanner from "@/components/PageHeroBanner";
 import { useLanguage } from "@/context/LanguageContext";
 import { SERVICES_LIST } from "@/data/companyData";
 
@@ -18,20 +19,39 @@ export default function CampCateringPage() {
     <main className="min-h-screen bg-[#F8FAFC] flex flex-col">
       <Header />
 
-      {/* Hero */}
-      <section className="relative pt-36 pb-20 bg-white border-b border-slate-200">
-        <div className="absolute inset-0 bg-grid-pattern opacity-15 pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Page Hero Banner */}
+      <PageHeroBanner
+        title="Camp & Catering"
+        titleAr="إدارة المخيمات والإعاشة الصناعية"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Services", href: "/services" },
+          { label: "Camp & Catering", active: true },
+        ]}
+        bgImage="/images/camp_catering.jpg"
+      />
+
+      {/* Intro Narrative Section */}
+      <section className="py-12 sm:py-16 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-[#F4511E] uppercase tracking-widest bg-orange-50 px-3 py-1 rounded-full border border-orange-200">
-              <span className="w-2 h-2 rounded-full bg-[#F4511E]"></span>
-              <span>CAMP & CATERING DIVISION</span>
-            </div>
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
-              {lang === "ar" ? "إدارة المخيمات والإعاشة الصناعية" : "Turnkey Workforce Accommodations & Industrial Catering"}
-            </h1>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 leading-[1.15]">
+              {lang === "ar" ? (
+                <>
+                  إدارة المجمعات السكنية <br />
+                  <span className="text-[#F4511E]">والإعاشة الغذائية المعتمدة HACCP</span>
+                </>
+              ) : (
+                <>
+                  Workforce Accommodations &amp; <br />
+                  <span className="text-[#F4511E]">HACCP-Certified Industrial Catering</span>
+                </>
+              )}
+            </h2>
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              Managing 5 executive accommodation compounds, dedicated worker residential camps, and high-volume HACCP certified industrial catering kitchens across Jubail, Yanbu, and Rabigh.
+              {lang === "ar"
+                ? "إدارة 5 مجمعات سكنية تنفيذية ومخيمات عمالية مجهزة ومطابخ مركزية معتمدة وفق أعلى معايير الصحة والسلامة في الجبيل وينبع ورابغ."
+                : "Managing 5 executive accommodation compounds, dedicated worker camps, and high-capacity HACCP industrial catering kitchens across Jubail, Yanbu, and Rabigh."}
             </p>
           </div>
         </div>
