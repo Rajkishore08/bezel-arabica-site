@@ -24,7 +24,7 @@ import {
   FileText,
   Boxes,
   Handshake,
-  Search,
+  Sparkles,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { COMPANY_INFO } from "@/data/companyData";
@@ -38,13 +38,13 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 15) {
+      if (window.scrollY > 20) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -127,96 +127,75 @@ export default function Header() {
   ];
 
   return (
-    <>
-      {/* Top micro bar for corporate contacts - Clean Light Theme */}
-      <div className="hidden lg:block bg-slate-900 border-b border-slate-800 text-xs text-slate-300 py-1.5 px-6 z-50">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <span className="flex items-center gap-1.5 text-white font-medium">
-              <span className="inline-block w-2 h-2 rounded-full bg-[#F4511E] animate-pulse"></span>
-              {COMPANY_INFO.isoCert} • {COMPANY_INFO.headquarters}
-            </span>
-            <a href={`tel:${COMPANY_INFO.phoneNumbers[0].replace(/\s/g, "")}`} className="flex items-center gap-1 hover:text-[#F4511E] transition-colors">
-              <Phone className="w-3.5 h-3.5 text-[#F4511E]" />
-              <span>{COMPANY_INFO.phoneNumbers[0]}</span>
-            </a>
-            <a href={`mailto:${COMPANY_INFO.email}`} className="flex items-center gap-1 hover:text-[#F4511E] transition-colors">
-              <Mail className="w-3.5 h-3.5 text-[#F4511E]" />
-              <span>{COMPANY_INFO.email}</span>
-            </a>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="text-slate-400 font-mono text-[11px]">JUBAIL • JEDDAH • RABIGH • YANBU</span>
-            <button
-              onClick={toggleLang}
-              className="flex items-center gap-1.5 bg-slate-800 hover:bg-[#F4511E] text-white px-3 py-0.5 rounded text-xs font-semibold transition-all border border-slate-700"
-            >
-              <Globe className="w-3.5 h-3.5" />
-              <span>{lang === "en" ? "العربية" : "English"}</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Sticky Header - Clean Light Theme */}
+    <motion.div
+      initial={{ y: -40, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed top-0 left-0 right-0 z-50 pt-2 sm:pt-3 px-3 sm:px-6 lg:px-8 pointer-events-none"
+    >
+      {/* Floating Glassmorphism Container with Soft Edges */}
       <header
-        className={`fixed top-0 lg:top-[33px] left-0 right-0 z-40 transition-all duration-300 ${
+        className={`max-w-7xl mx-auto pointer-events-auto rounded-2xl sm:rounded-full transition-all duration-500 ${
           isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-md border-b border-slate-200 py-2.5"
-            : "bg-white/90 backdrop-blur-sm border-b border-slate-200/80 shadow-xs py-3.5"
+            ? "bg-white/85 backdrop-blur-xl border border-white/80 shadow-[0_10px_35px_rgba(15,23,42,0.08)] py-2 sm:py-2.5 px-4 sm:px-6"
+            : "bg-white/75 backdrop-blur-lg border border-white/60 shadow-[0_4px_20px_rgba(15,23,42,0.04)] py-2.5 sm:py-3.5 px-4 sm:px-7"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <Link href="/" className="flex items-center group shrink-0 mr-4 lg:mr-8">
-              <div className="relative h-12 sm:h-14 flex items-center justify-start transition-all">
-                <Image
-                  src="/images/logo.png"
-                  alt="Bezel Arabia Company Ltd. Logo"
-                  width={340}
-                  height={76}
-                  priority
-                  className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-[1.02]"
-                />
-              </div>
-            </Link>
+        <div className="flex items-center justify-between">
+          {/* Brand Logo with Smooth Hover Scale */}
+          <Link href="/" className="flex items-center group shrink-0 mr-3 lg:mr-6">
+            <div className="relative h-10 sm:h-11 flex items-center justify-start transition-transform group-hover:scale-105">
+              <Image
+                src="/images/logo.png"
+                alt="Bezel Arabia Company Ltd."
+                width={300}
+                height={68}
+                priority
+                className="h-8 sm:h-9 lg:h-10 w-auto object-contain"
+              />
+            </div>
+          </Link>
 
-            {/* Streamlined Desktop Navigation (5 clean items) */}
-            <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
-              {navLinks.map((link) => {
-                const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
-                const hasDropdown = !!link.dropdown;
+          {/* Streamlined Desktop Navigation with Soft Glass Hover Pills */}
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
+              const hasDropdown = !!link.dropdown;
 
-                return (
-                  <div
-                    key={link.name}
-                    className="relative"
-                    onMouseEnter={() => hasDropdown && setActiveDropdown(link.name)}
-                    onMouseLeave={() => hasDropdown && setActiveDropdown(null)}
+              return (
+                <div
+                  key={link.name}
+                  className="relative"
+                  onMouseEnter={() => hasDropdown && setActiveDropdown(link.name)}
+                  onMouseLeave={() => hasDropdown && setActiveDropdown(null)}
+                >
+                  <Link
+                    href={link.href}
+                    className={`relative flex items-center gap-1.5 px-3.5 py-1.5 text-sm font-semibold transition-all duration-200 rounded-full ${
+                      isActive
+                        ? "text-[#F4511E] bg-orange-50/90 shadow-xs font-bold"
+                        : "text-slate-700 hover:text-[#F4511E] hover:bg-slate-100/70"
+                    }`}
                   >
-                    <Link
-                      href={link.href}
-                      className={`flex items-center gap-1.5 px-3 py-2 text-sm font-semibold transition-colors rounded-lg ${
-                        isActive
-                          ? "text-[#F4511E] bg-orange-50/80 font-bold"
-                          : "text-slate-700 hover:text-[#F4511E] hover:bg-slate-50"
-                      }`}
-                    >
-                      <span>{link.name}</span>
-                      {hasDropdown && (
-                        <ChevronDown className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-transform" />
-                      )}
-                    </Link>
+                    <span>{link.name}</span>
+                    {hasDropdown && (
+                      <ChevronDown
+                        className={`w-3.5 h-3.5 opacity-60 transition-transform duration-200 ${
+                          activeDropdown === link.name ? "rotate-180 opacity-100 text-[#F4511E]" : ""
+                        }`}
+                      />
+                    )}
+                  </Link>
 
-                    {/* Mega Dropdown Menu - Light Theme */}
+                  {/* Mega Dropdown with Frosted Glassmorphism & Soft Edges */}
+                  <AnimatePresence>
                     {hasDropdown && activeDropdown === link.name && (
                       <motion.div
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 8 }}
-                        transition={{ duration: 0.15 }}
-                        className={`absolute top-full ${isRtl ? "right-0" : "left-0"} mt-1 w-80 bg-white border border-slate-200 rounded-2xl shadow-2xl p-2.5 z-50`}
+                        initial={{ opacity: 0, y: 12, scale: 0.96 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 8, scale: 0.96 }}
+                        transition={{ duration: 0.2, ease: "easeOut" }}
+                        className={`absolute top-full ${isRtl ? "right-0" : "left-0"} mt-2 w-80 bg-white/95 backdrop-blur-2xl border border-slate-200/80 rounded-2xl shadow-[0_20px_40px_rgba(15,23,42,0.12)] p-2.5 z-50`}
                       >
                         <div className="space-y-1">
                           {link.dropdown?.map((sub) => {
@@ -225,9 +204,9 @@ export default function Header() {
                               <Link
                                 key={sub.name}
                                 href={sub.href}
-                                className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-orange-50/70 border border-transparent hover:border-orange-100 transition-all group"
+                                className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-orange-50/80 border border-transparent hover:border-orange-100 transition-all group"
                               >
-                                <div className="p-2 rounded-lg bg-slate-100 text-[#F4511E] group-hover:bg-[#F4511E] group-hover:text-white transition-colors">
+                                <div className="p-2 rounded-lg bg-slate-100/80 text-[#F4511E] group-hover:bg-[#F4511E] group-hover:text-white group-hover:scale-105 shadow-xs transition-all">
                                   <SubIcon className="w-4 h-4" />
                                 </div>
                                 <div>
@@ -242,104 +221,107 @@ export default function Header() {
                         </div>
                       </motion.div>
                     )}
-                  </div>
-                );
-              })}
-            </nav>
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </nav>
 
-            {/* Right CTAs */}
-            <div className="hidden lg:flex items-center gap-3">
-              {/* Language Switcher EN | AR */}
-              <button
-                onClick={toggleLang}
-                className="text-xs font-bold text-slate-700 hover:text-[#F4511E] px-2 py-1 rounded transition-colors flex items-center gap-1"
-              >
-                <span className={lang === "en" ? "text-slate-900 font-extrabold" : "text-slate-500"}>EN</span>
-                <span className="text-slate-300">|</span>
-                <span className={lang === "ar" ? "text-[#F4511E] font-extrabold" : "text-slate-500"}>AR</span>
-              </button>
+          {/* Right CTAs with Soft Rounded Shapes & Language Switcher */}
+          <div className="hidden lg:flex items-center gap-3">
+            {/* Language Switcher Pill */}
+            <button
+              onClick={toggleLang}
+              className="text-xs font-bold text-slate-700 hover:text-[#F4511E] px-3 py-1.5 rounded-full bg-slate-100/80 hover:bg-slate-200/80 transition-all flex items-center gap-1.5 border border-slate-200/60"
+            >
+              <Globe className="w-3.5 h-3.5 text-[#F4511E]" />
+              <span className={lang === "en" ? "text-slate-900 font-extrabold" : "text-slate-500"}>EN</span>
+              <span className="text-slate-300">|</span>
+              <span className={lang === "ar" ? "text-[#F4511E] font-extrabold" : "text-slate-500"}>AR</span>
+            </button>
 
-              <Link
-                href="/contact"
-                className="relative inline-flex items-center gap-2 bg-[#F4511E] hover:bg-[#D84315] text-white px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide shadow-md shadow-[#F4511E]/20 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
-              >
-                <span>{t("nav.contact", "Contact Us")}</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
+            {/* Glowing Gradient CTA Button */}
+            <Link
+              href="/contact"
+              className="relative inline-flex items-center gap-2 bg-gradient-to-r from-[#F4511E] to-[#E64A19] hover:from-[#D84315] hover:to-[#BF360C] text-white px-5 py-2 rounded-full text-xs sm:text-sm font-bold tracking-wide shadow-md shadow-orange-500/25 hover:shadow-lg hover:shadow-orange-500/35 transition-all transform hover:-translate-y-0.5 active:translate-y-0 group"
+            >
+              <span>{t("nav.contact", "Contact Us")}</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            </Link>
+          </div>
 
-            {/* Mobile Menu Button */}
-            <div className="flex items-center gap-2 lg:hidden">
-              <button
-                onClick={toggleLang}
-                className="flex items-center gap-1 text-xs px-2.5 py-1.5 rounded-lg bg-slate-100 text-slate-800 border border-slate-300 font-medium"
-              >
-                <Globe className="w-3 h-3 text-[#F4511E]" />
-                <span>{lang === "en" ? "العربية" : "EN"}</span>
-              </button>
+          {/* Mobile Actions Button */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <button
+              onClick={toggleLang}
+              className="flex items-center gap-1 text-xs px-2.5 py-1.5 rounded-full bg-slate-100/90 text-slate-800 border border-slate-200 font-medium"
+            >
+              <Globe className="w-3 h-3 text-[#F4511E]" />
+              <span>{lang === "en" ? "العربية" : "EN"}</span>
+            </button>
 
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2.5 rounded-xl bg-slate-100 border border-slate-300 text-slate-800 hover:text-[#F4511E] focus:outline-none"
-                aria-label="Toggle Navigation"
-              >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
-            </div>
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-xl bg-slate-100/90 border border-slate-200 text-slate-800 hover:text-[#F4511E] focus:outline-none transition-colors"
+              aria-label="Toggle Navigation"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
         </div>
 
-        {/* Mobile Slide-down Drawer Navigation - Clean Light Theme */}
+        {/* Mobile Slide-down Drawer with Frosted Glassmorphism */}
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="lg:hidden bg-white border-b border-slate-200 shadow-2xl overflow-hidden"
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="lg:hidden mt-3 pt-3 border-t border-slate-200/80 overflow-hidden"
             >
-              <div className="max-w-7xl mx-auto px-4 py-6 space-y-4 max-h-[80vh] overflow-y-auto">
-                <div className="grid grid-cols-1 gap-1">
-                  {navLinks.map((link) => (
-                    <div key={link.name} className="border-b border-slate-100 pb-1">
-                      <Link
-                        href={link.href}
-                        className={`block py-2.5 px-3 rounded-lg text-base font-bold ${
-                          pathname === link.href ? "text-[#F4511E] bg-orange-50" : "text-slate-800 hover:text-[#F4511E]"
-                        }`}
-                      >
-                        {link.name}
-                      </Link>
-                      {link.dropdown && (
-                        <div className="pl-4 pr-2 space-y-1 mt-1 mb-2 bg-slate-50 p-2.5 rounded-xl border border-slate-200">
-                          {link.dropdown.map((sub) => (
-                            <Link
-                              key={sub.name}
-                              href={sub.href}
-                              className="block py-1.5 px-2 text-sm text-slate-600 hover:text-[#F4511E]"
-                            >
-                              • {sub.name}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
+              <div className="space-y-2 max-h-[75vh] overflow-y-auto pr-1">
+                {navLinks.map((link) => (
+                  <div key={link.name} className="border-b border-slate-100/80 pb-1.5">
+                    <Link
+                      href={link.href}
+                      className={`block py-2 px-3 rounded-xl text-sm font-bold ${
+                        pathname === link.href ? "text-[#F4511E] bg-orange-50/80" : "text-slate-800 hover:text-[#F4511E]"
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                    {link.dropdown && (
+                      <div className="pl-3 pr-2 space-y-1 mt-1 mb-1.5 bg-slate-50/80 p-2 rounded-xl border border-slate-200/60">
+                        {link.dropdown.map((sub) => (
+                          <Link
+                            key={sub.name}
+                            href={sub.href}
+                            className="block py-1 px-2 text-xs text-slate-600 hover:text-[#F4511E]"
+                          >
+                            • {sub.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
 
-                <div className="pt-4 border-t border-slate-200 space-y-3">
-                  <div className="text-xs text-slate-600 space-y-1">
-                    <div>📍 Head Office: Al Jubail 31951, Saudi Arabia</div>
-                    <div>📞 {COMPANY_INFO.phoneNumbers.join(" | ")}</div>
-                    <div>✉️ {COMPANY_INFO.email}</div>
+                <div className="pt-3 space-y-2 text-xs text-slate-600">
+                  <div className="flex items-center gap-2">
+                    <Phone className="w-3.5 h-3.5 text-[#F4511E]" />
+                    <span>{COMPANY_INFO.phoneNumbers[0]}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Mail className="w-3.5 h-3.5 text-[#F4511E]" />
+                    <span>{COMPANY_INFO.email}</span>
                   </div>
                   <Link
                     href="/contact"
-                    className="w-full flex items-center justify-center gap-2 bg-[#F4511E] hover:bg-[#D84315] text-white py-3 rounded-xl text-sm font-bold shadow-md"
+                    className="w-full flex items-center justify-center gap-2 bg-[#F4511E] hover:bg-[#D84315] text-white py-2.5 rounded-full text-xs font-bold shadow-md transition-all mt-2"
                   >
                     <span>{t("nav.contact", "Contact Us")}</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </div>
@@ -347,6 +329,6 @@ export default function Header() {
           )}
         </AnimatePresence>
       </header>
-    </>
+    </motion.div>
   );
 }

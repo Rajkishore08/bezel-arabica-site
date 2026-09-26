@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Space_Grotesk, Tajawal } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
+import PageLoader from "@/components/PageLoader";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -67,9 +69,6 @@ export const metadata: Metadata = {
   },
 };
 
-import PageLoader from "@/components/PageLoader";
-import ScrollToTop from "@/components/ScrollToTop";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -77,10 +76,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${jakarta.variable} ${spaceGrotesk.variable} ${tajawal.variable} font-sans`}>
-      <body className="bg-[#F8FAFC] text-[#0F172A] font-sans antialiased selection:bg-[#F4511E] selection:text-white min-h-screen flex flex-col">
+      <body className="bg-[#F8FAFC] text-[#0F172A] font-sans antialiased selection:bg-[#F4511E] selection:text-white min-h-screen flex flex-col relative overflow-x-hidden">
+        {/* Ambient Site-Wide Mesh Gradient Layer */}
+        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+          {/* Top-Right Luminous Orange Aura */}
+          <div className="absolute -top-[10%] -right-[10%] w-[650px] h-[650px] bg-gradient-to-bl from-orange-400/10 via-amber-200/5 to-transparent rounded-full blur-[140px]"></div>
+          {/* Center-Left Cool Sapphire Aura */}
+          <div className="absolute top-[35%] -left-[10%] w-[550px] h-[550px] bg-gradient-to-tr from-sky-400/8 via-indigo-100/4 to-transparent rounded-full blur-[120px]"></div>
+          {/* Bottom-Right Warm Gold Aura */}
+          <div className="absolute -bottom-[10%] -right-[5%] w-[600px] h-[600px] bg-gradient-to-tl from-amber-300/8 via-orange-100/4 to-transparent rounded-full blur-[130px]"></div>
+        </div>
+
         <LanguageProvider>
           <PageLoader />
-          {children}
+          <div className="relative z-10 flex flex-col min-h-screen">
+            {children}
+          </div>
           <ScrollToTop />
         </LanguageProvider>
       </body>
